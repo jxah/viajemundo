@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <head>
+        <title>
+            Preguntas sobre Carolina del Norte
+        </title>
+    </head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        .w3-btn {margin-bottom:10px;}
+    </style>
+    <body>
+
+        <div class="w3-container">
+        <!-- Write the questions inside the h2 tag -->
+        <h2 id="pregunta">Jacobo le gustaría que contestaras algunas preguntas. ¿Estás listo?</h2>
+        <p></p>
+        <p>
+          <button id="opA" class="w3-btn w3-white w3-border w3-border-red w3-round-large" onclick="daAlert(checkResult('opA'))"> Comienzo </button>
+          <button id="opB" class="w3-btn w3-white w3-border w3-border-red w3-round-large" onclick="daAlert(checkResult('opB'))"> B</button>
+         <button id="opC" class="w3-btn w3-white w3-border w3-border-red w3-round-large" onclick="daAlert(checkResult('opC'))"> C</button>
+          </p>
+        </div>
+        
+        <script>
+            var buttonIdList = ["opA","opB","opC"];
+            function checkResult(selectedID) {
+                if (selectedID == "opA") return (allQ[i].daCorrect == 0);
+                if (selectedID == "opB") return (allQ[i].daCorrect == 1);
+                if (selectedID == "opC") return (allQ[i].daCorrect == 2);
+                return false;
+            }   
+            function daAlert(result) {
+                if (i > 0) {
+                if (result) {
+                    alert('¡Estás correcto!'); 
+                    myFunction();
+                }
+                else alert('¡Trata de nuevo!');
+            }
+                if (i == 0) {
+                    myFunction()
+                }
+            }
+           
+            function myFunction() {
+                //check the right one                 
+                i = i + 1;
+                // var buttonIdList = ["opA","opB","opC"];
+                if (i == allQ.length) {
+                    for (iopt=0; iopt<3; ++iopt) {document.getElementById(buttonIdList[iopt]).style.display = "none";}
+                    document.getElementById("pregunta").innerHTML = 'Jacobo dice: "¡Gracias por participar!"';
+                    
+                }
+                // alert(i);
+                document.getElementById("pregunta").innerHTML = allQ[i].pregunta ;
+                for (iopt=0; iopt<3; ++iopt) {document.getElementById(buttonIdList[iopt]).style.display = "none";};
+                for (iopt=0; iopt<allQ[i].daOptions.length; ++iopt) {
+                    var theButton = document.getElementById(buttonIdList[iopt]);
+                    theButton.innerHTML =  allQ[i].daOptions[iopt];
+                    theButton.style.display = "";
+                }
+            }
+            var qIntro = {
+                pregunta: "Jacobo le gustaría que contestaras algunas preguntas. ¿Estás listo?",
+                daCorrect: 0,
+                daOptions: ["Si", "No"]
+            }
+
+            var q18 = {
+              pregunta:"¿Cómo se llama el cantante que escribió ¨Cartolina on My Mind¨?",
+              daCorrect: 1,
+              daOptions: ["Tito Rojas", "James Vernon Taylor", "Anthony Hamilton"]
+            }
+
+            var q19 = {
+              pregunta:"¿Cuál es el zoológico más extenso del mundo?",
+              daCorrect: 2,
+              daOptions: ["El monoloro de Carolina", "El animal kindom en Disney", "El zoológico de Asheboro, NC"]
+            }
+            
+            var q21 = {
+                pregunta: "¿Que puedes comer si tienes hambre en North Carolina?",
+                daCorrect: 0,
+                daOptions: ["Donas de Krispy Kreme","Donitas Aymat","Donas de Dunking Donuts"]
+            }
+
+            var q12 = {
+                pregunta: "¿Cómo se llaman las montañas dónde se encuentra el ¨Blue Ridge Parkway¨?",
+                daCorrect: 0,
+                daOptions: ["Las Apalaches", "La Cordillera Central","Los Rocky Mountains"]
+            }
+
+            var q27 = {
+                pregunta: "¿Cuál es un baile local de Carolina del Norte?",
+                daCorrect: 1,
+                daOptions: ["El baile del pavo", "Thump thump and jump", "El baile de la guinea"] 
+            }
+
+            allQ = [qIntro,q12,q18,q19,q27,q21];
+            var i = 0;
+            for (iopt=1; iopt<3; ++iopt) {document.getElementById(buttonIdList[iopt]).style.display = "none";};
+
+            // myFunction();
+
+            </script>
+            <a href="index.html">Presentación</a>
+        </body>
+
+</html>
